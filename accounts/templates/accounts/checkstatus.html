@@ -1,0 +1,77 @@
+{% extends 'accounts/home.html' %}
+
+Hi Check Status of your flight. Please add in the following details to check yoru flight status.
+
+<br>
+{% if message %}
+
+{{message}}
+
+{% endif %}
+
+{% block content %}
+
+<!-- <form class="" action="{% url 'checkstatus' %}" method="POST">
+  {% csrf_token %}
+
+  <table>
+    <tr>
+      <th>Flight Number</th>
+      <th>Departure Date</th>
+      <th>Arrival Date</th>
+    </tr>
+    <tr>
+      <th>
+        <input type="text" name="flight_num" value="">
+      </th>
+      <th>
+        <input type="date" name="dp_date" value="">
+      </th>
+      <th>
+        <input type="date" name="ar_date" value="">
+      </th>
+    </tr>
+  </table>
+  <br>
+
+  <input type="submit" value="View Status">
+</form> -->
+<div id="">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="">
+                    <div id="success"></div>
+                    <h3>Check Status</h3>
+                    <br>
+                    <form class="" action="{% url 'checkstatus' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="form-row">
+                            <div class="control-group col-sm-6">
+                                <label>Flight Number</label>
+                                <input type="text" name="flight_num" class="form-control" id="fname" placeholder="E.g. ht2293@nyu.edu"/>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <label>Departure Date</label>
+                                <input type="date" name="dp_date" class="form-control" id="lname" placeholder="E.g. Harsh"/>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="control-group col-sm-6">
+                                <label>Arrival Date</label>
+                                <input type="date" name="ar_date" class="form-control" id="lname" placeholder="E.g. Harsh"/>
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+
+                        <div class="button"><button type="submit" id="bookingButton">View Status</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+{% endblock %}

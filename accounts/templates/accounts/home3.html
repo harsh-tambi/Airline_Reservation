@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>NYU Shanghai Air Reservation System</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicons -->
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+        <!-- Vendor CSS File -->
+        <link href="{% static 'accounts/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+        <link href="{% static 'accounts/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+        <link href="{% static 'accounts/vendor/animate/animate.min.css' %}" rel="stylesheet">
+        <link href="{% static 'accounts/vendor/slick/slick.css' %}" rel="stylesheet">
+        <link href="{% static 'accounts/vendor/slick/slick-theme.css' %}" rel="stylesheet">
+        <link href="{% static 'accountsvendor/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+        <!-- Main Stylesheet File -->
+        <link href="{% static 'accounts/css/hover-style.css' %}" rel="stylesheet">
+        <link href="{% static 'accounts/css/style.css' %}" rel="stylesheet">
+    </head>
+
+    <body>
+        <!-- Header Section Start -->
+        <header id="header">
+            <a href="{% url 'agenthome' %}" class="logo"><img src="{% static 'accounts/img/logo1.jpg' %}" alt="logo"></a>
+            <div class="mobile-menu-btn"><i class="fa fa-bars"></i></div>
+            <nav class="main-menu top-menu">
+                <ul>
+                    {% if not user.is_authenticated %}
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                    <li><a href="{% url 'signup' %}">Signup</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'agentsearchflights' %}">Search Flights</a></li>
+                    <li><a href="{% url 'viewcommission' %}">View Commission</a></li>
+                    <li><a href="{% url 'viewtopcustomers' %}">View Top Customers</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </header>
+
+        <div id="welcome">
+            <div class="container">
+                <h3>Air Reservation System (Agent Panel)</h3>
+                <p></p>
+            </div>
+        </div>
+
+        {% if message %}
+
+        <h5>{{ message }}</h5>
+
+        {% endif %}
+
+
+
+
+        {% block content %}
+
+        {% endblock %}
+
+
+
+
+        <div id="amenities" class="home-amenities">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Your Abilities</h2>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 icons">
+                        <i class="icon icon-2"></i>
+                        <a href="{% url 'agentsearchflights' %}">
+                        <h3>Search Flights</h3>
+                        </a>
+
+
+                    </div>
+                    <div class="col-md-3 col-sm-6 icons">
+                        <i class="icon icon-3"></i>
+                        <a href="{% url 'search_flight' %}">
+                        <h3>View Upcoming Flights</h3>
+                        </a>
+
+                    </div>
+                    <div class="col-md-3 col-sm-6 icons">
+                        <i class="icon icon-4"></i>
+                        <a href="{% url 'viewcommission' %}">
+                        <h3>View Commission</h3>
+                        </a>
+
+                    </div>
+                    <div class="col-md-3 col-sm-6 icons">
+                        <i class="icon icon-6"></i>
+                        <a href="{% url 'viewtopcustomers' %}">
+                        <h3>View Top Customers</h3>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Amenities Section Start -->
+
+        <!-- Subscribe Section End -->
+
+        <!-- Booking Section Start -->
+        <div id="booking">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="booking-form">
+                            <div id="success"></div>
+                            <h3>Join our Newsletter!</h3>
+                            <form name="sentMessage" action="{% url 'agentnewsletter' %}"id="bookingForm" novalidate="novalidate">
+                                <div class="form-row">
+
+                                    <div class="control-group col-sm-6">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" name = 'email'id="email" placeholder="E.g. email@example.com" required="required" data-validation-required-message="Please enter your email" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                </div>
+
+                                <div class="button"><button type="submit" id="bookingButton">Join</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Booking Section End -->
+
+        <!-- Call Section Start -->
+        <div id="call-us">
+            <div class="container">
+                <div class="section-header">
+                    <h2>If you have any questions, send an email to us!</h2>
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <a href="mailto:ht2293@nyu.edu">@ht2293@nyu.edu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Call Section End -->
+
+        <!-- Footer Section Start -->
+
+
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+        <!-- Vendor JavaScript File -->
+        <script src="{% static 'accounts/vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/jquery/jquery-migrate.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/easing/easing.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/stickyjs/sticky.js' %}"></script>
+        <script src="{% static 'accounts/vendor/superfish/hoverIntent.js' %}"></script>
+        <script src="{% static 'accounts/vendor/superfish/superfish.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/wow/wow.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/slick/slick.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/tempusdominus/js/moment.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/tempusdominus/js/moment-timezone.min.js' %}"></script>
+        <script src="{% static 'accounts/vendor/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+        <!-- Booking Javascript File -->
+        <script src="{% static 'accounts/js/booking.js' %}"></script>
+        <script src="{% static 'accounts/js/jqBootstrapValidation.min.js' %}"></script>
+
+        <!-- Main Javascript File -->
+        <script src="{% static 'accounts/js/main.js' %}"></script>
+    </body>
+</html>
+
+<!-- <a href="{% url 'login' %}">Login</a>
+
+{% if not user.is_authenticated %}
+<a href="{% url 'signup' %}">Signup</a>
+{% endif %}
+
+<a href="{% url 'search_flight' %}">Search Flights</a>
+
+<a href="{% url 'checkstatus' %}">View Flight Status</a>
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'logout' %}">Logout</a>
+
+{% endif %} -->
