@@ -1,0 +1,33 @@
+{% extends 'accounts/home4.html' %}
+
+{% block content %}
+
+Hi Staff you can add new permission from here.
+<br>
+<br>
+
+<form class="" action="{% url 'changepermission' %}" method="POST">
+
+  {% csrf_token %}
+
+
+  Select Employee ID: <select class="" name="email">
+    {% for e in employees %}
+    <option value="{{e}}">{{e}}</option>
+    {% endfor %}
+  </select>
+
+  <br>
+  <br>
+  Make employee an: <select class="" name="permission">
+    <option value="admin">Admin</option>
+    <option value="operator">Operator</option>
+
+  </select>
+  <br>
+  <br>
+
+  <input type="submit" name="" value="UPDATE Permission">
+</form>
+
+{% endblock %}

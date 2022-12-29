@@ -1,0 +1,112 @@
+{% extends 'accounts/home4.html' %}
+
+{% block content %}
+
+Hi Staff! You can create new flights here.
+
+Please add the following details.
+
+<br>
+{% if error %}
+
+{{ error }}
+
+
+{% endif %}
+
+<form action="{% url 'addflight' %}" method="POST">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <th>Departure Airport</th>
+      <th>Destination Airport</th>
+      <th>Flight Number</th>
+      <th>Airline</th>
+      <th>Airplane ID</th>
+      <!-- <th>Price</th>
+      <th>Status</th> -->
+
+
+    </tr>
+    <tr>
+      <th>
+        <select name="Departure Airport">
+          <option value="none"> -- Please Select One -- </option>
+          {% if dp_lst %}
+            {% for airport in dp_lst %}
+            <option value="{{airport}}">{{airport}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+
+
+
+      <th>
+        <select name="Destination Airport">
+          <option value="none"> -- Please Select One -- </option>
+          {% if da_lst %}
+            {% for airport in da_lst %}
+            <option value="{{airport}}">{{airport}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+
+
+      <th>
+      <input type="integer" name="flightnum" value="">
+      </th>
+
+      <th>
+        <select name="Airline">
+          <option value="{{staff_airl}}">{{staff_airl}}</option>
+        </select>
+      </th>
+
+      <th>
+        <select name="airplaneid">
+          <option value="none"> -- Please Select One -- </option>
+          {% if id_airp_ls %}
+            {% for id in id_airp_ls %}
+            <option value="{{id}}">{{id}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+
+    </tr>
+  </table>
+
+  <br>
+  Departure Time: <input type="datetime-local" name="Departure Time" value="">
+  <br>
+  <br>
+  Arrival Time: <input type="datetime-local" name="Destination Time" value="">
+  <br>
+  <br>
+  Price: <input type="text" name="price" value="">
+  <br>
+  <br>
+  Status: <select class="" name="status">
+    <option value="Upcoming">Upcoming</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Delayed">Delayed</option>
+
+  </select>
+  <br>
+  <br>
+  <input type="submit" value="Add New Flight">
+
+</form>
+
+{% endblock %}

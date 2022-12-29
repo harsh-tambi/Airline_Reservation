@@ -1,0 +1,23 @@
+{% extends 'accounts/home4.html' %}
+
+{% block content %}
+
+<h1>Hi You can add new airports from here</h1>
+<br>
+<form class="" action="{% url 'airport_add' %}" method="POST">
+
+  {% csrf_token %}
+
+  Airport Name: <input type="text" name="name" value="">
+  <br>
+  <br>
+  City: <input type="text" name="city" value="">
+
+  <br>
+  <br>
+
+  <input type="submit" value="Add New Aiport">
+
+</form>
+
+{% endblock %}

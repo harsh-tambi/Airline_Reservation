@@ -1,0 +1,78 @@
+{% extends 'accounts/home3.html' %}
+
+{% block content %}
+Hi Agent you can search for flights from here.
+<br>
+<br>
+<form action="{% url 'agent_search_results' %}" method="POST">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <th>Departure Airport</th>
+      <th>Departure City</th>
+      <th>Destination Airport</th>
+      <th>Destination City</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <th>
+        <select name="Departure Airport">
+          <option value="none"> -- Please Select One -- </option>
+          {% if departure_airports %}
+            {% for airport in departure_airports %}
+            <option value="{{airport}}">{{airport}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+      <th>
+        <select name="Departure City">
+          <option value="none"> -- Please Select One -- </option>
+          {% if departure_airports_city %}
+            {% for city in departure_airports_city %}
+            <option value="{{city}}">{{city}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+      <th>
+        <select name="Destination Airport">
+          <option value="none"> -- Please Select One -- </option>
+          {% if destination_airports %}
+            {% for airport in destination_airports %}
+            <option value="{{airport}}">{{airport}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+      <th>
+        <select name="Destination City">
+          <option value="none"> -- Please Select One -- </option>
+          {% if destination_airports_city %}
+            {% for city in destination_airports_city %}
+            <option value="{{city}}">{{city}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+      <th><input type="date" name="Date" value=""></th>
+    </tr>
+  </table>
+
+  <input type="submit" value="Search My Flights">
+
+</form>
+
+{% endblock %}

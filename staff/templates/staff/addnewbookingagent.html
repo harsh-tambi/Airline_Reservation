@@ -1,0 +1,33 @@
+{% extends 'accounts/home4.html' %}
+
+{% block content %}
+
+Hi Staff. You can add booking agents through here.
+
+<br>
+<br>
+
+<form class="" action="{% url 'add_agent' %}" method="POST">
+
+  {% csrf_token %}
+
+  Airline: <select class="" name="airline">
+    <option value="{{staff_airl}}">{{staff_airl}}</option>
+  </select>
+
+  <br>
+  <br>
+
+  Agent Email ID:<select class="" name="email">
+    {% for agent in lst %}
+      <option value="{{agent}}">{{agent}}</option>
+    {% endfor %}
+  </select>
+  <br>
+  <br>
+
+  <input type="submit" value="Add Agent">
+
+</form>
+
+{% endblock %}

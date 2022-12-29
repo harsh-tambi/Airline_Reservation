@@ -1,0 +1,35 @@
+{% extends 'accounts/home3.html' %}
+
+{% block content %}
+
+Hi Agent, You can view your commission here!
+
+
+
+
+<br>
+Here is the Total Commission you have earned(all time)
+<br>
+
+{% for c in agentcommission %}
+{{c}}
+{% endfor %}
+
+<br>
+
+Here are the total number of tickets you have sold (in the past 30 days):
+<br>
+  {% for c in tot_ticket_30 %}
+  {{c}}
+  {% endfor %}
+<br>
+
+Here are the total number of tickets you have sold(all time):
+<br>
+  {% for c in tot_ticket %}
+    {{c}}
+  {% endfor %}
+<br>
+
+
+{% endblock %}

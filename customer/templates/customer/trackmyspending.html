@@ -1,0 +1,41 @@
+{% extends 'accounts/home2.html' %}
+
+{% block content %}
+
+<h1>Track Your Spending</h1>
+
+<img src="data:image/png;base64, {{ plot_url }}" alt="">
+
+<!-- {% if past_year  %}
+
+{{past_year}}
+
+{% endif %} -->
+
+
+
+<a href="#"><h3>You can also see your Customized Spending</h3></a>
+
+<!-- {% if m_spending_customer %}
+
+{% for x in m_spending_customer %}
+
+{{ x }}
+
+{% endfor %}
+
+{% endif %} -->
+
+
+<!-- {% if index_m %}
+
+{% for x in index_m %}
+
+{{ x }}
+
+{% endfor %}
+
+{% endif %} -->
+
+<br>
+{% endblock %}

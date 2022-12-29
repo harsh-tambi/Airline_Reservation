@@ -1,0 +1,34 @@
+{% extends 'accounts/home4.html' %}
+
+
+{% block content %}
+
+Hi Staff! These are the most frequent customers on your airline within the laast year.
+<br>
+<br>
+
+{% for cust in frequent_customers %}
+  <li>{{cust}}</li>
+{% endfor %}
+
+<form class="" action="{% url 'customerhistory' %}" method="POST">
+{% csrf_token %}
+
+<br>
+<br>
+Select Customer to See his/her history of flights on your airline:
+<br>
+  <select class="" name="cust_email">
+
+  {% for c in email_cust %}
+ <option value="{{c}}">{{c}}</option>
+  {% endfor %}
+
+</select>
+
+<input type="submit" name="" value="View Customer's Flights">
+
+
+</form>
+
+{% endblock %}

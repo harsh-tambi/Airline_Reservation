@@ -1,0 +1,181 @@
+{% extends 'accounts/home4.html' %}
+
+{% block content %}
+
+Hi Staff! What's up!
+
+{% if message %}
+
+{{ message }}
+
+{% endif %}
+<!-- <br>
+<br>
+
+<a href="{% url 'createnewflights' %}">Create New Flights</a>
+<br>
+<br>
+
+<a href="{% url 'changestatus' %}">Change Flight Status</a>
+<br>
+<br>
+
+
+<a href="{% url 'addnewairplane' %}">Add New Airplanes</a>
+<br>
+<br>
+
+<a href="{% url 'addnewairport' %}">Add New Airports</a>
+<br>
+<br>
+
+<a href="{% url 'addnewbookingagent' %}">Add New Booking Agent</a>
+<br>
+<br>
+
+<a href="{% url 'viewbookingagents' %}">View Booking Agents</a>
+<br>
+<br>
+
+<a href="{% url 'viewfreqcustomers' %}">View Frequent Customers</a>
+<br>
+<br>
+
+<a href="{% url 'topdestin' %}">View Top Destination</a>
+<br>
+<br>
+
+<a href="{% url 'revenuecomparison' %}">View Revenue Comparison</a>
+<br>
+<br>
+
+<a href="{% url 'newpermission' %}">Grant New Permissions</a>
+<br>
+<br>
+
+<a href="{% url 'viewreports' %}">View Reports</a>
+<br>
+<br> -->
+
+Here are your Airline's Upcoming Flights (in the next 30 days):
+<br>
+<br>
+
+{% if lst %}
+
+{% for l in lst %}
+    <br>
+    {{l}}
+    <br>
+{% endfor %}
+
+{% endif %}
+
+
+<br>
+<br>
+
+You can also search for your airline flights:
+<br>
+
+
+<form action="{% url 'staff_search_results' %}" method="POST">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <th>Departure Airport</th>
+      <th>Departure City</th>
+      <th>Destination Airport</th>
+      <th>Destination City</th>
+      <th>Flight Number</th>
+      <th>Airline</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <th>
+        <select name="Departure Airport">
+          <option value="none"> -- Please Select One -- </option>
+          {% if dp_lst %}
+            {% for airport in dp_lst %}
+            <option value="{{airport}}">{{airport}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+      <th>
+        <select name="Departure City">
+          <option value="none"> -- Please Select One -- </option>
+          {% if dac_list %}
+            {% for city in dac_list %}
+            <option value="{{city}}">{{city}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+      <th>
+        <select name="Destination Airport">
+          <option value="none"> -- Please Select One -- </option>
+          {% if da_lst %}
+            {% for airport in da_lst %}
+            <option value="{{airport}}">{{airport}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+      <th>
+        <select name="Destination City">
+          <option value="none"> -- Please Select One -- </option>
+          {% if dtac_list %}
+            {% for city in dtac_list %}
+            <option value="{{city}}">{{city}}</option>
+            {% endfor %}
+          {% endif %}
+
+        </select>
+
+      </th>
+
+      <th>
+
+      <select name="Flight Number">
+        <option value="none"> -- Please Select One -- </option>
+        {% if flightnum %}
+          {% for num in flightnum %}
+          <option value="{{airport}}">{{num}}</option>
+          {% endfor %}
+        {% endif %}
+
+      </select>
+
+      </th>
+
+      <th>
+        <select name="Airline">
+          <option value="{{airline}}">{{airline}}</option>
+        </select>
+      </th>
+
+      <th><input type="date" name="Date" value=""></th>
+
+
+
+
+    </tr>
+  </table>
+
+  <input type="submit" value="Search My Flights">
+
+
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'accounts/home4.html' %}
+
+
+{% block content %}
+
+Hi Staff Member you can add a new airplane here:
+
+<br>
+<br>
+
+Please Enter the Following Details:
+
+<br>
+
+<form class="" action="{% url 'confirmation_new_airplane' %}" method="POST">
+
+  {% csrf_token %}
+
+  Airline:<select class="" name="Airline">
+    <option value="{{staff_airl}}">{{staff_airl}}</option>
+        </select>
+<br>
+<br>
+
+  Number of Seats: <input type="integer" name="seats">
+
+  <br>
+  <br>
+
+<input type="submit" value="Add New Airplane">
+</form>
+
+{% endblock %}
